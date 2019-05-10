@@ -106,8 +106,8 @@ namespace HairSalon.Models
       {
         Stylist newStylist = (Stylist) otherStylist;
         bool idEquality = (this.GetId() == newStylist.GetId());
-        bool descriptionEquality = (this.GetName() == newStylist.GetName());
-        return (idEquality && descriptionEquality);
+        bool nameEquality = (this.GetName() == newStylist.GetName());
+        return (idEquality && nameEquality);
       }
     }
   }
