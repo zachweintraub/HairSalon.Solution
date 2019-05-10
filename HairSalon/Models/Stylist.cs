@@ -29,8 +29,32 @@ namespace HairSalon.Models
       return _id;
     }
 
+    //save an instance of stylist to the DB
+    public void Save()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"INSERT INTO stylists (first, last) VALUES (@StylistFirst, @StylistLast);";
+      MySqlParameter first = new MySqlParameter();
+      first.ParameterName = "@StylistFirst";
+      first.Value = _first;
+      cmd.Parameters.Add(first);
+      MySqlParameter last = new MySqlParameter();
+      last.ParameterName = "@StylistLast";
+      last.Value = _last;
+      cmd.Parameters.Add(last);
+      cmd.ExecuteNonQuery();
+      _id = (int) cmd.LastInsertedId;
+      conn.Close();
+      if(conn != null)
+      {
+        conn.Dispose();
+      }
+    }
+
     //returns all instances of stylist from the DB
-    public List<Stylist> GetAll()
+    public static List<Stylist> GetAll()
     {
       List<Stylist> allStylists = new List<Stylist>{};
       MySqlConnection conn = DB.Connection();
