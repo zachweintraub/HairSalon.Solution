@@ -43,7 +43,7 @@ namespace HairSalon.Models
       MySqlConnection conn = DB.Connection();
       conn.Open();
       var cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"INSERT INTO clients (first, last, stylist_id) VALUES (@ClientFirst, @ClientLast, @StylistId);";
+      cmd.CommandText = @"INSERT INTO clients (stylist_id, first, last) VALUES (@StylistId, @ClientFirst, @ClientLast);";
       MySqlParameter first = new MySqlParameter();
       first.ParameterName = "@ClientFirst";
       first.Value = _first;
@@ -52,7 +52,6 @@ namespace HairSalon.Models
       last.ParameterName = "@ClientLast";
       last.Value = _last;
       cmd.Parameters.Add(last);
-      cmd.ExecuteNonQuery();
       MySqlParameter stylistId = new MySqlParameter();
       stylistId.ParameterName = "@StylistId";
       stylistId.Value = _stylistId;
@@ -91,6 +90,38 @@ namespace HairSalon.Models
         conn.Dispose();
       }
       return allClients;
+    }
+
+    //returns client by id
+    public static Client Find(int searchId)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT * FROM clients WHERE id = @thisId;";
+      MySqlParameter thisId = new MySqlParameter();
+      thisId.ParameterName = "@thisId";
+      thisId.Value = searchId;
+      cmd.Parameters.Add(thisId);
+      MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+      int id = 0;
+      int stylistId = 0;
+      string first = "";
+      string last = "";
+      while (rdr.Read())
+      {
+        id = rdr.GetInt32(0);
+        stylistId = rdr.GetInt32(1);
+        first = rdr.GetString(2);
+        last = rdr.GetString(3);
+      }
+      Client foundClient = new Client(first, last, stylistId, id);
+      conn.Close();
+      if(conn != null)
+      {
+        conn.Dispose();
+      }
+      return foundClient;
     }
 
     //equality override to compare client objects
