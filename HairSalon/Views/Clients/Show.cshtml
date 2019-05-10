@@ -1,0 +1,12 @@
+@using HairSalon.Models;
+
+@{
+  Layout = "_Layout";
+}
+
+<h4>@Model.GetName()</h4>
+
+<p>Stylist: @Stylist.Find(Model.GetStylistId()).GetName()</p>
+
+<h5>Upcoming Appointments</h5>
+<p>There are no upcoming appointments to display.</p>

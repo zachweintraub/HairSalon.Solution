@@ -39,7 +39,7 @@ namespace HairSalon
 
       app.Run(async (context) =>
       {
-        await context.Response.WriteAsync("Something went wrong!");
+        await context.Response.WriteAsync("PARDON OUR DUST! This page is currently under construction :/");
       });
     }
   }
