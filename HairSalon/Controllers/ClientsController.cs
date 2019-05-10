@@ -29,13 +29,11 @@ namespace HairSalon.Controllers
     }
 
     [HttpPost("/stylists/{stylistId}/clients/create")]
-    public ActionResult Create(string first, string last)
+    public ActionResult Create(string first, string last, int stylistId)
     {
-      Stylist myStylist = new Stylist(first, last);
-      myStylist.Save();
-      return RedirectToAction("Show");
+      Client myClient = new Client(first, last, stylistId);
+      myClient.Save();
+      return RedirectToAction("Show", myClient.GetId());
     }
-
-
   }
 }
