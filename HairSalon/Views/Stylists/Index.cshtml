@@ -1,0 +1,20 @@
+@using HairSalon.Models;
+
+@{
+  Layout = "_Layout";
+}
+
+<h4>All Stylists</h4>
+@if(Model.Count < 1)
+{
+  <p>There are no stylists to display!</p>
+}
+
+@foreach (Stylist stylist in Model)
+{
+  <a href="/stylists/@stylist.GetId()">@stylist.GetName()</a>
+}
+
+<form action="stylists/new" method="get">
+  <button type="submit">Add A Stylist</button>
+</form>
