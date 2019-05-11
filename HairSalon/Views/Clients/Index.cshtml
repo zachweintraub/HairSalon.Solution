@@ -1,0 +1,16 @@
+@using HairSalon.Models;
+
+@{
+  Layout = "_Layout";
+}
+
+<h4>All Clients</h4>
+@if(Model.Count < 1)
+{
+  <p>There are no clients to display!</p>
+}
+
+@foreach (Client client in @Client.GetAll())
+{
+  <a href="/stylists/@Stylist.Find(@client.GetStylistId()).GetId()/clients/@client.GetId()">@client.GetName()</a><br>
+}

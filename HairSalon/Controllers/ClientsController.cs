@@ -33,7 +33,7 @@ namespace HairSalon.Controllers
     {
       Client myClient = new Client(first, last, stylistId);
       myClient.Save();
-      return RedirectToAction("Show", myClient.GetId());
+      return View("Show", myClient);
     }
   }
 }

@@ -6,8 +6,6 @@
 
 <h4>@Model.GetName()</h4>
 
-<h5>Upcoming Appointments</h5>
-<p>There are no upcoming appointments to display.</p>
 
 <h5>Clients</h5>
 @if(Model.GetClients().Count < 1)
@@ -22,6 +20,10 @@ else
   }
 }
 
+<br>
 <form action="/stylists/@Model.GetId()/clients/new" method="get">
   <button type="get">Add A Client</button>
 </form>
+
+<h5>Upcoming Appointments</h5>
+<p>There are no upcoming appointments to display.</p>

@@ -20,13 +20,18 @@ A C# application that allows employees of a hair salon to create records for sty
 1. Clone this repository: $ git clone https:/github.com/zachweintraub/HairSalon.Solution.git
 2. Change into the work directory:: $ cd HairSalon.Solution
 3. To edit the project, open the project in your preferred text editor.
-4. To run the program, first navigate to the HairSalon directory, then run the following commands: $ dotnet restore $ dotnet run, and open the resulting url in your browser of choice.
+4. To connect the appropriate databases, start MAMP and click Open WebStart page in the MAMP window.
+5. In the website you're taken to, select phpMyAdmin from the Tools dropdown.
+6. Select the Import tab.
+7. Select zach_weintraub.sql from the top level of the project's directory and click Go.
+8. Repeat steps 6 and 7 with the file zach_weintraub_test.sql, also in the project directory's top level.
+9. To run the program, first navigate to the HairSalon directory, then run the following commands: $ dotnet restore $ dotnet run, and open the resulting url in your browser of choice.
 
 ## Known Bugs
 * No known bugs at this time.
 
 ## Technologies Used
-* C# .NET Core App 2.2.103 & ASP.NET Core SQL Mono Atom Git Github
+* C# .NET Core App 2.2.103 & ASP.NETCore SQL MAMP Mono Atom Git Github
 
 ## Support and contact details
 

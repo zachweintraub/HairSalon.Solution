@@ -4,12 +4,13 @@
 }
 
 <form action="/stylists/@Model.GetId()/clients/create" method="post">
+  <label for="stylist">Stylist: </label>
   <select name="stylist">
     @foreach (Stylist stylist in @Stylist.GetAll())
     {
-      <option value="@stylist.GetId()">@stylist.GetName()</option>
+      <option value="@stylist.GetId()" @if(Model.GetId() == stylist.GetId()){<text>selected</text>}>@stylist.GetName()</option>
     }
-  </select>
+  </select><br>
   <label for="first">First Name:</label>
   <input required id="first" name="first" type="text"><br>
   <label for="last">Last Name:</label>

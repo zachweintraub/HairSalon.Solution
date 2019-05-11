@@ -6,7 +6,7 @@
 
 <h4>@Model.GetName()</h4>
 
-<p>Stylist: @Stylist.Find(Model.GetStylistId()).GetName()</p>
+<p>Stylist: <a href="/stylists/@Stylist.Find(Model.GetStylistId()).GetId()">@Stylist.Find(Model.GetStylistId()).GetName()</a></p>
 
 <h5>Upcoming Appointments</h5>
 <p>There are no upcoming appointments to display.</p>
