@@ -1,0 +1,26 @@
+@using HairSalon.Models;
+@{
+  Layout = "_Layout";
+}
+
+<form action="/appointments/create" method="post">
+  <label for="stylist">Stylist: </label>
+  <select name="stylist">
+    @foreach (Stylist stylist in @Stylist.GetAll())
+    {
+      <option value="@stylist.GetId()">@stylist.GetName()</option>
+    }
+  </select><br>
+  <label for="client">Client: </label>
+  <select name="client">
+    @foreach (Client client in @Client.GetAll())
+    {
+      <option value="@client.GetId()">@client.GetName()</option>
+    }
+  </select><br>
+  <label for="date">Select Date:</label>
+  <input required id="date" name="date" type="date"><br>
+  <label for="time">Select Time:</label>
+  <input required id="time" name="time" type="time"><br>
+  <button type="submit">Save</button>
+</form>

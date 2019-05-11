@@ -2,17 +2,25 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="~/css/styles.css">
     <title>Salon de Coiffure</title>
   </head>
   <body>
-    <h1>Salon de Coiffure</h1>
-    <h3>Admin Console</h3>
-    <div id="nav">
-      <a href="/">Home</a>
-      <a href="/stylists">Stylists</a>
-      <a href="/clients">Clients</a>
-      <a href="/appointments">Appointments</a>
+    <div class="wrapper">
+      <div class="header jumbotron">
+        <h1>Salon de Coiffure</h1>
+        <h3>Admin Console</h3>
+      </div>
+      <div class="nav">
+        <a href="/">Home</a><br>
+        <a href="/stylists">All Stylists</a><br>
+        <a href="/clients">All Clients</a><br>
+        <a href="#">Appointments</a>
+      </div>
+      <div class="main">
+        @RenderBody()
+      </div>
     </div>
-    @RenderBody()
   </body>
 </html>

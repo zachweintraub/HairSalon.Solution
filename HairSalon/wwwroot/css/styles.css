@@ -1,0 +1,41 @@
+.wrapper{
+  display: grid;
+  grid-template-areas: "header header"
+                       "nav main";
+  grid-template-columns: 1fr 6fr;
+  grid-template-rows: 1fr 4fr;
+}
+
+.header{
+  grid-row: header;
+  grid-column: header;
+  align-self: center;
+  background-color: lightgreen;
+}
+
+.jumbotron{
+  margin: 0;
+}
+
+.nav{
+  grid-row: nav;
+  grid-column: nav;
+  background-color: lightgreen;
+  padding: 1em;
+}
+
+.nav > a{
+  background-color: lightgray;
+  max-height: 20px;
+  margin: 1em;
+}
+
+.main{
+  grid-row: main;
+  grid-column: main;
+  padding: 2em;
+}
+
+#splash{
+  width: 50%;
+}
