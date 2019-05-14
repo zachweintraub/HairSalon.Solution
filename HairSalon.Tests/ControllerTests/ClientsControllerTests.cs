@@ -21,16 +21,16 @@ namespace HairSalon.Tests
     public void Show_ReturnsCorrectView_True()
     {
       ClientsController controller = new ClientsController();
-      ActionResult indexView = controller.Show(1);
-      Assert.IsInstanceOfType(indexView, typeof(ViewResult));
+      ActionResult showView = controller.Show(1);
+      Assert.IsInstanceOfType(showView, typeof(ViewResult));
     }
 
     [TestMethod]
     public void New_ReturnsCorrectView_True()
     {
       ClientsController controller = new ClientsController();
-      ActionResult indexView = controller.New(1);
-      Assert.IsInstanceOfType(indexView, typeof(ViewResult));
+      ActionResult newView = controller.New(1);
+      Assert.IsInstanceOfType(newView, typeof(ViewResult));
     }
   }
 }
