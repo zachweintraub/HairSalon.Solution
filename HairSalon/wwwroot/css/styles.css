@@ -39,3 +39,21 @@
 #splash{
   width: 50%;
 }
+
+[class^="icon"] {
+  height: 15px;
+  width: 15px;
+  margin-left: 3px;
+}
+
+[class^="icon"]:hover {
+  cursor: pointer;
+}
+
+.list-item {
+  float: left;
+}
+
+.edit-form {
+  display: none;
+}

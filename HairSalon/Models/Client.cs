@@ -25,6 +25,16 @@ namespace HairSalon.Models
       return _first + " " + _last;
     }
 
+    public string GetFirstName()
+    {
+      return _first;
+    }
+
+    public string GetLastName()
+    {
+      return _last;
+    }
+
     //returns the client's id
     public int GetId()
     {
@@ -140,6 +150,54 @@ namespace HairSalon.Models
         return (idEquality && stylistIdEquality && nameEquality);
       }
     }
+
+    public void Edit(int id, string newFirst, string newLast)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"UPDATE clients SET first = @newFirst, last = @newLast WHERE id = @thisId;";
+      MySqlParameter thisId = new MySqlParameter();
+      thisId.ParameterName = "@thisId";
+      thisId.Value = id;
+      cmd.Parameters.Add(thisId);
+      MySqlParameter newFirstName = new MySqlParameter();
+      newFirstName.ParameterName = "@newFirst";
+      newFirstName.Value = newFirst;
+      cmd.Parameters.Add(newFirstName);
+      MySqlParameter newLastName = new MySqlParameter();
+      newLastName.ParameterName = "@newLast";
+      newLastName.Value = newLast;
+      cmd.Parameters.Add(newLastName);
+      cmd.ExecuteNonQuery();
+      _first = newFirst;
+      _last = newLast;
+      conn.Close();
+      if(conn != null)
+      {
+        conn.Dispose();
+      }
+    }
+
+    public void Delete()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"DELETE FROM clients WHERE id = @thisId;";
+      MySqlParameter thisId = new MySqlParameter();
+      thisId.ParameterName = "@thisId";
+      thisId.Value = _id;
+      cmd.Parameters.Add(thisId);
+      cmd.ExecuteNonQuery();
+      conn.Close();
+      if(conn != null)
+      {
+        conn.Dispose();
+      }
+    }
+
+
 
 
     //deletes all instances of client from the DB

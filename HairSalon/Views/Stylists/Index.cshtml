@@ -12,7 +12,7 @@
 
 @foreach (Stylist stylist in Model)
 {
-  <a href="/stylists/@stylist.GetId()">@stylist.GetName()</a><br>
+  <a href="/stylists/@stylist.GetId()">@stylist.GetName()</a><img class="icon-edit" src="~/img/icons/edit.png"><img class="icon-delete" src="~/img/icons/trash.png"><br>
 }
 
 <form action="stylists/new" method="get">

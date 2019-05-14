@@ -1,0 +1,7 @@
+<form action="/clients/@Model.GetId()/edit" method="post">
+      <label for="newFirst">First Name: </label>
+      <input id="newFirst" name="newFirst" type="text" class="form-control" value="@Model.GetFirstName()"></input>
+      <label for="newLast">Last Name: </label>
+      <input id="newLast" name="newLast" type="text" class="form-control" value="@Model.GetLastName()"></input>
+      <button type="submit">Update</button>
+</form>

@@ -35,5 +35,21 @@ namespace HairSalon.Controllers
       myClient.Save();
       return View("Show", myClient);
     }
+
+    [HttpPost("/clients/{id}/delete")]
+    public ActionResult Destroy(int id)
+    {
+      Client deleteClient = Client.Find(id);
+      deleteClient.Delete();
+      return RedirectToAction("Index");
+    }
+
+    [HttpPost("/clients/{id}/edit")]
+    public ActionResult Update(int id, string newFirst, string newLast)
+    {
+      Client editClient = Client.Find(id);
+      editClient.Edit(id, newFirst, newLast);
+      return RedirectToAction("Index");
+    }
   }
 }
