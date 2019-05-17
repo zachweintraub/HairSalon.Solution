@@ -24,6 +24,16 @@ namespace HairSalon.Models
       return _first + " " + _last;
     }
 
+    public string GetFirstName()
+    {
+      return _first;
+    }
+
+    public string GetLastName()
+    {
+      return _last;
+    }
+
     public int GetId()
     {
       return _id;
@@ -137,6 +147,58 @@ namespace HairSalon.Models
         conn.Dispose();
       }
       return foundStylist;
+    }
+
+    //edit details for a stylist
+    public void Edit(int id, string newFirst, string newLast)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"UPDATE stylists SET first = @newFirst, last = @newLast WHERE id = @thisId;";
+      MySqlParameter thisId = new MySqlParameter();
+      thisId.ParameterName = "@thisId";
+      thisId.Value = id;
+      cmd.Parameters.Add(thisId);
+      MySqlParameter newFirstName = new MySqlParameter();
+      newFirstName.ParameterName = "@newFirst";
+      newFirstName.Value = newFirst;
+      cmd.Parameters.Add(newFirstName);
+      MySqlParameter newLastName = new MySqlParameter();
+      newLastName.ParameterName = "@newLast";
+      newLastName.Value = newLast;
+      cmd.Parameters.Add(newLastName);
+      cmd.ExecuteNonQuery();
+      _first = newFirst;
+      _last = newLast;
+      conn.Close();
+      if(conn != null)
+      {
+        conn.Dispose();
+      }
+    }
+
+    //deletes a single instance of a stylist, as well as all associated clients
+    public void Delete()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"DELETE FROM stylists WHERE id = @thisId;";
+      MySqlParameter thisId = new MySqlParameter();
+      thisId.ParameterName = "@thisId";
+      thisId.Value = _id;
+      cmd.Parameters.Add(thisId);
+      cmd.ExecuteNonQuery();
+      conn.Close();
+      if(conn != null)
+      {
+        conn.Dispose();
+      }
+      foreach(Client client in GetClients())
+      {
+        client.Delete();
+      }
     }
 
     //deletes all instances of stylist from the DB

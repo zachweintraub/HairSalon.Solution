@@ -12,9 +12,10 @@
 
 @foreach (Stylist stylist in Model)
 {
-  <a href="/stylists/@stylist.GetId()">@stylist.GetName()</a><img class="icon-edit" src="~/img/icons/edit.png"><img class="icon-delete" src="~/img/icons/trash.png"><br>
+  <a class="list-item" href="/stylists/@stylist.GetId()">@stylist.GetName()</a><img class="icon-edit list-item" src="~/img/icons/edit.png"><form onclick="return confirm('Are you sure you want to delete this stylist and all associated clients?')" action="stylists/@stylist.GetId()/delete" method="post"><input class="icon" type="image" src="~/img/icons/trash.png"></form>
+  <div class="edit-form">@Html.Partial("EditStylist", @stylist)<br></div>
 }
-
+<br>
 <form action="stylists/new" method="get">
   <button type="submit">Add A Stylist</button>
 </form>

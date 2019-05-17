@@ -12,6 +12,6 @@
 
 @foreach (Client client in @Client.GetAll())
 {
-  <a class="list-item" href="/stylists/@Stylist.Find(@client.GetStylistId()).GetId()/clients/@client.GetId()">@client.GetName()</a><img class="icon-edit list-item" src="~/img/icons/edit.png"><form onclick="return confirm('Are you sure you want to delete this?')" action="clients/@client.GetId()/delete" method="post"><input class="icon" type="image" src="~/img/icons/trash.png"></form>
-  <div class="edit-form">@Html.Partial("EditClient", @client)</div>
+  <a class="list-item" href="/stylists/@Stylist.Find(@client.GetStylistId()).GetId()/clients/@client.GetId()">@client.GetName()</a><img class="icon-edit list-item" src="~/img/icons/edit.png"><form onclick="return confirm('Are you sure you want to delete this client?')" action="clients/@client.GetId()/delete" method="post"><input class="icon" type="image" src="~/img/icons/trash.png"></form>
+  <div class="edit-form">@Html.Partial("EditClient", @client)<br></div>
 }

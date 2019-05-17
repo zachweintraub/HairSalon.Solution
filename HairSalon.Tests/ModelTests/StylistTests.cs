@@ -82,5 +82,26 @@ namespace HairSalon.Tests
       List<Client> foundClients = stylist1.GetClients();
       CollectionAssert.AreEqual(expectedClients, foundClients);
     }
+
+   [TestMethod]
+    public void Delete_DeletesCorrectInstance_GetAllEmpty()
+    {
+      Stylist newStylist = new Stylist("Cutter", "O'Hare");
+      newStylist.Save();
+      newStylist.Delete();
+      int expected = 0;
+      int actual = Client.GetAll().Count;
+      Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void Edit_UpdatesStylistData_UpdatedStylist()
+    {
+      Stylist newStylist = new Stylist("Cutter", "O'Hare");
+      newStylist.Save();
+      newStylist.Edit(1, "John", "Smith");
+      string expected = "John Smith";
+      Assert.AreEqual(expected, newStylist.GetName());
+    }
   }
 }
