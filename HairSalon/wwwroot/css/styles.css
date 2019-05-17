@@ -61,3 +61,7 @@
 .edit-specialty-form {
   display: none;
 }
+
+#new-specialty {
+  display: none;
+}

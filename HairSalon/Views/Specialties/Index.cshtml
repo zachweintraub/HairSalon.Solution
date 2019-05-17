@@ -13,9 +13,8 @@
 @foreach (Specialty specialty in Model)
 {
   <div class="specialty-list-item"><a class="list-item" href="/specialties/@specialty.GetId()">@specialty.GetName()</a><img class="icon-edit-specialty list-item" src="~/img/icons/edit.png"><form onclick="return confirm('Are you sure you want to delete this specialty?')" action="/specialties/@specialty.GetId()/delete" method="post"><input class="icon" type="image" src="~/img/icons/trash.png"></form></div>
-  <div class="edit-specialty-form"><form action="/specialties/@specialty.GetId()/edit" method="post"><input type="text" value="@specialty.GetName()"></div>
+  <div class="edit-specialty-form"><form action="/specialties/@specialty.GetId()/edit" method="post"><input name="newName" type="text" value="@specialty.GetName()"><input class="icon" type="image" src="~/img/icons/checkmark.png"></div>
 }
 <br>
-<form action="specialties/new" method="get">
-  <button type="submit">Add A Specialty</button>
-</form>
+<button id="add-specialty" type="button">Add A Specialty</button><br>
+<div id="new-specialty"><form method="post" action="/specialties/create"><input required name="newName" type="text" placeholder="Enter a new specialty..."><input class="icon" type="image" src="~/img/icons/checkmark.png"></form></div>

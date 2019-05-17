@@ -1,0 +1,19 @@
+@using HairSalon.Models;
+
+@{
+  Layout = "_Layout";
+}
+
+<h4>@Model.GetName()</h4>
+
+@if(Model.GetStylists().Count < 1)
+{
+  <p>There are currently no stylists associated with this specialty.</p>
+}
+else
+{
+  @foreach (Stylist stylist in Model.GetStylists())
+  {
+    <a href="/stylists/@stylist.GetId()">@stylist.GetName()</a><br>
+  }
+}

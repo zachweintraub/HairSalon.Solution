@@ -8,6 +8,9 @@ $(function(){
     $('.icon-edit-specialty').click(function(){
         $(this).parent().hide();
         $(this).parent().nextAll('.edit-specialty-form').first().show();
-    })
+    });
+    $('#add-specialty').click(function(){
+        $('#new-specialty').slideToggle();
+    });
 
 });
