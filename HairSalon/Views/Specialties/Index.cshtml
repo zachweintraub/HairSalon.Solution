@@ -1,0 +1,21 @@
+@using HairSalon.Models;
+
+@{
+  Layout = "_Layout";
+}
+
+<h4>All Specialties</h4>
+@if(Model.Count < 1)
+{
+  <p>There are no specialties to display!</p>
+}
+
+@foreach (Specialty specialty in Model)
+{
+  <div class="specialty-list-item"><a class="list-item" href="/specialties/@specialty.GetId()">@specialty.GetName()</a><img class="icon-edit-specialty list-item" src="~/img/icons/edit.png"><form onclick="return confirm('Are you sure you want to delete this specialty?')" action="/specialties/@specialty.GetId()/delete" method="post"><input class="icon" type="image" src="~/img/icons/trash.png"></form></div>
+  <div class="edit-specialty-form"><form action="/specialties/@specialty.GetId()/edit" method="post"><input type="text" value="@specialty.GetName()"></div>
+}
+<br>
+<form action="specialties/new" method="get">
+  <button type="submit">Add A Specialty</button>
+</form>
