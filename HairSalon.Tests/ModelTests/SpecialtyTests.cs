@@ -90,6 +90,19 @@ namespace HairSalon.Tests
         Assert.AreEqual(expected, result);
     }
 
+    [TestMethod]
+    public void GetStylists_ReturnsListOfStylists_List()
+    {
+        Specialty specialty = new Specialty("Bangs");
+        Stylist stylist = new Stylist("Cutter", "O'Hare");
+        specialty.Save();
+        stylist.Save();
+        stylist.AddSpecialty(specialty.GetId());
+        List<Stylist> result = specialty.GetStylists();
+        List<Stylist> expected = new List<Stylist>{stylist};
+        CollectionAssert.AreEqual(expected, result);
+    }
+
   }
 
 }
