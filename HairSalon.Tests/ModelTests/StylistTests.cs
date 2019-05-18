@@ -103,5 +103,38 @@ namespace HairSalon.Tests
       string expected = "John Smith";
       Assert.AreEqual(expected, newStylist.GetName());
     }
+
+    [TestMethod]
+    public void GetSpecialties_ReturnListOfSpecialties_SpecialtyList()
+    {
+      Stylist newStylist = new Stylist("Cutter", "O'Hare");
+      newStylist.Save();
+      Specialty newSpecialty = new Specialty("Blowouts");
+      newSpecialty.Save();
+      newStylist.AddSpecialty(newSpecialty.GetId());
+      List<Specialty> expected = new List<Specialty>{newSpecialty};
+      List<Specialty> result = newStylist.GetSpecialties();
+      List<Stylist> expected2 = new List<Stylist>{newStylist};
+      List<Stylist> result2 = newSpecialty.GetStylists();
+      CollectionAssert.AreEqual(expected, result);
+      CollectionAssert.AreEqual(expected2, result2);
+    }
+
+    [TestMethod]
+    public void RemoveSpecialty_RemovesDesignatedSpecialty_EmptySpecialtyList()
+    {
+      Stylist newStylist = new Stylist("Cutter", "O'Hare");
+      newStylist.Save();
+      Specialty newSpecialty = new Specialty("Blowouts");
+      newSpecialty.Save();
+      newStylist.AddSpecialty(newSpecialty.GetId());
+      newStylist.RemoveSpecialty(newSpecialty.GetId());
+      List<Specialty> expected = new List<Specialty>{};
+      List<Specialty> result = newStylist.GetSpecialties();
+      List<Stylist> expected2 = new List<Stylist>{};
+      List<Stylist> result2 = newSpecialty.GetStylists();
+      CollectionAssert.AreEqual(expected, result);
+      CollectionAssert.AreEqual(expected2, result2);
+    }
   }
 }

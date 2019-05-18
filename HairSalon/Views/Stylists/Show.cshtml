@@ -6,6 +6,34 @@
 
 <h4>@Model.GetName()</h4>
 
+<h5>Specialties</h5>
+@if(Model.GetSpecialties().Count < 1)
+{
+  <p>This stylist has no specialties to display. Add one below!</p>
+}
+else
+{
+  @foreach(Specialty specialty in Model.GetSpecialties())
+  {
+    <a class="list-item" href="/specialties/@specialty.GetId()">@specialty.GetName()</a><form action="/stylists/@Model.GetId()/removespecialty/@specialty.GetId()" method="post"><input class="icon" type="image" src="~/img/icons/trash.png"></form>
+  }
+}
+<button type="button" id="add-specialty">Assign A New Specialty</button>
+<div id="new-specialty">
+  <form action="/stylists/@Model.GetId()/updatespecialties" method="post">
+    <select name="selectedSpecialty" id="selectedSpecialty">
+      <option value="0">Select A Specialty</option>
+      @foreach(Specialty specialty in Specialty.GetAll())
+      {
+        @if(!Model.GetSpecialties().Contains(specialty))
+        {
+          <option value="@specialty.GetId()">@specialty.GetName()</option>
+        }
+      }
+    </select>
+    <input class="icon-add" type="image" src="~/img/icons/add.png">
+  </form>
+</div>
 
 <h5>Clients</h5>
 @if(Model.GetClients().Count < 1)

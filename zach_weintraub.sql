@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 11, 2019 at 12:07 AM
+-- Generation Time: May 18, 2019 at 02:28 AM
 -- Server version: 5.7.25
 -- PHP Version: 7.3.1
 
@@ -55,10 +55,38 @@ CREATE TABLE `clients` (
 --
 
 INSERT INTO `clients` (`id`, `stylist_id`, `first`, `last`) VALUES
-(1, 1, 'Juana', 'Trimm'),
-(2, 2, 'Shaggy', 'Mané'),
-(3, 1, 'Zach', 'Weintraub'),
-(4, 2, 'Justine', 'Meister');
+(5, 4, 'Lester', 'Longhare'),
+(6, 4, 'Juana', 'Trimm'),
+(7, 4, 'Zachary', 'Weintraub'),
+(8, 5, 'Justine', 'Meister'),
+(9, 5, 'Sean', 'Paul'),
+(10, 6, 'Amanda', 'Schave');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `specialties`
+--
+
+CREATE TABLE `specialties` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `specialties`
+--
+
+INSERT INTO `specialties` (`id`, `name`) VALUES
+(2, 'Bang Trims'),
+(3, 'Blowouts'),
+(4, 'Fades'),
+(5, 'Coloring'),
+(6, 'Perms'),
+(7, 'Special Occasion Styling'),
+(8, 'The Macklemore'),
+(9, 'The Rachel'),
+(11, 'Curly Hair');
 
 -- --------------------------------------------------------
 
@@ -77,8 +105,21 @@ CREATE TABLE `stylists` (
 --
 
 INSERT INTO `stylists` (`id`, `first`, `last`) VALUES
-(1, 'Cutter', 'O\'Hare'),
-(2, 'Snippy', 'Bangz');
+(4, 'Harry', 'Topp'),
+(5, 'Snippy', 'Bangz'),
+(6, 'Cutter', 'O\'Hare');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stylists_specialties`
+--
+
+CREATE TABLE `stylists_specialties` (
+  `id` int(11) NOT NULL,
+  `stylist_id` int(11) NOT NULL,
+  `specialty_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Indexes for dumped tables
@@ -97,9 +138,21 @@ ALTER TABLE `clients`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `specialties`
+--
+ALTER TABLE `specialties`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `stylists`
 --
 ALTER TABLE `stylists`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `stylists_specialties`
+--
+ALTER TABLE `stylists_specialties`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -116,13 +169,25 @@ ALTER TABLE `appointments`
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `specialties`
+--
+ALTER TABLE `specialties`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `stylists`
 --
 ALTER TABLE `stylists`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `stylists_specialties`
+--
+ALTER TABLE `stylists_specialties`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
