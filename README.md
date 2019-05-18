@@ -16,6 +16,13 @@ A C# application that allows employees of a hair salon to create records for sty
 |Salon employee can add new clients to a specific stylist. They cannot add a client if no stylists have been added.|
 |Salon employee can delete a client.|
 |Salon employee can edit a client's information.|
+|Salon employee can delete stylists.|
+|Salon employee can delete clients.|
+|Salon employee can view individual clients.|
+|Salon employee can edit stylists.|
+|Salon employee can edit clients.|
+|Salon employee can assign multiple specialties to a stylist.|
+|Salon employee can see a given stylist's specialties.|
 
 ## Setup/Installation Requirements
 
