@@ -66,5 +66,13 @@ namespace HairSalon.Controllers
       thisStylist.RemoveSpecialty(specialtyId);
       return View("Show", thisStylist);
     }
+
+    [HttpPost("/stylists/deleteall")]
+    public ActionResult Destroy()
+    {
+      Stylist.ClearAll();
+      Client.ClearAll();
+      return RedirectToAction("Index");
+    }
   }
 }
