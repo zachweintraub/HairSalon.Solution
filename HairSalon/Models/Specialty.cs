@@ -28,6 +28,7 @@ namespace HairSalon.Models
 
     public void Save()
     {
+        Console.WriteLine("saving");
         MySqlConnection conn = DB.Connection();
         conn.Open();
         var cmd = conn.CreateCommand() as MySqlCommand;
