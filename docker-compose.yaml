@@ -1,0 +1,9 @@
+version: '3.0'
+
+services:
+  app:
+    image: hairsalon
+    build:
+      context: .
+    ports:
+      - '8080:80'
